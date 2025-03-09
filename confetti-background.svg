@@ -1,0 +1,46 @@
+
+<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Pink confetti -->
+  <circle cx="100" cy="150" r="5" fill="#FFDEE2" />
+  <circle cx="300" cy="400" r="5" fill="#FFDEE2" />
+  <circle cx="500" cy="100" r="5" fill="#FFDEE2" />
+  <circle cx="700" cy="600" r="5" fill="#FFDEE2" />
+  <rect x="150" y="350" width="10" height="10" fill="#FFDEE2" />
+  <rect x="550" y="250" width="10" height="10" fill="#FFDEE2" />
+
+  <!-- Blue confetti -->
+  <circle cx="200" cy="250" r="5" fill="#D3E4FD" />
+  <circle cx="400" cy="500" r="5" fill="#D3E4FD" />
+  <circle cx="600" cy="200" r="5" fill="#D3E4FD" />
+  <rect x="250" y="450" width="10" height="10" fill="#D3E4FD" />
+  <rect x="650" y="350" width="10" height="10" fill="#D3E4FD" />
+
+  <!-- Yellow confetti -->
+  <circle cx="150" cy="200" r="5" fill="#FEF7CD" />
+  <circle cx="350" cy="450" r="5" fill="#FEF7CD" />
+  <circle cx="550" cy="150" r="5" fill="#FEF7CD" />
+  <circle cx="750" cy="650" r="5" fill="#FEF7CD" />
+  <rect x="200" y="400" width="10" height="10" fill="#FEF7CD" />
+  <rect x="600" y="300" width="10" height="10" fill="#FEF7CD" />
+
+  <!-- Orange confetti -->
+  <circle cx="250" cy="300" r="5" fill="#FEC6A1" />
+  <circle cx="450" cy="550" r="5" fill="#FEC6A1" />
+  <circle cx="650" cy="250" r="5" fill="#FEC6A1" />
+  <rect x="300" y="500" width="10" height="10" fill="#FEC6A1" />
+  <rect x="700" cy="400" width="10" height="10" fill="#FEC6A1" />
+
+  <!-- Purple confetti -->
+  <circle cx="300" cy="350" r="5" fill="#E5DEFF" />
+  <circle cx="500" cy="600" r="5" fill="#E5DEFF" />
+  <circle cx="700" cy="300" r="5" fill="#E5DEFF" />
+  <rect x="350" y="550" width="10" height="10" fill="#E5DEFF" />
+  <rect x="750" y="450" width="10" height="10" fill="#E5DEFF" />
+
+  <!-- Green confetti -->
+  <circle cx="350" cy="400" r="5" fill="#F2FCE2" />
+  <circle cx="550" cy="650" r="5" fill="#F2FCE2" />
+  <circle cx="750" cy="350" r="5" fill="#F2FCE2" />
+  <rect x="400" y="600" width="10" height="10" fill="#F2FCE2" />
+  <rect x="800" y="500" width="10" height="10" fill="#F2FCE2" />
+</svg>
