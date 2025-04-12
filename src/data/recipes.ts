@@ -904,7 +904,7 @@ export const recipes: Recipe[] = [
     title: "Espresso Tiramisu",
     slug: "espresso-tiramisu",
     description: "A classic Italian dessert with layers of coffee-soaked ladyfingers and mascarpone cream.",
-    image: "https://bakedbrewedbeautiful.com/wp-content/uploads/2021/03/DSC0432-1536x1027.jpg",
+    image: "https://i.imgur.com/oweC1gg.jpg",
     prepTime: "4 hours (plus chilling time)",
     difficulty: "Hard",
     content: "This espresso tiramisu is a decadent dessert that brings together the rich flavors of coffee and creamy mascarpone. Perfect for special occasions and coffee lovers.",
