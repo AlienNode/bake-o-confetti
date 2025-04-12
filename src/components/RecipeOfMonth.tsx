@@ -48,7 +48,8 @@ const RecipeOfMonth = () => {
             </div>
           </div>
           
-          <div className="mt-4">
+          <div className="mt-4 flex items-center">
+            <div className="mr-4 text-sm text-gray-500">By Julian Nwadinobi</div>
             <Link to={`/recipe/${recipeOfTheMonth.slug}`}>
               <Button>View Recipe</Button>
             </Link>
