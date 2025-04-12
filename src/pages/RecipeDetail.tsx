@@ -5,9 +5,11 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import RecipeGallery from '@/components/RecipeGallery';
 import { recipes } from '@/data/recipes';
-import { Clock, Utensils, ChevronLeft, Users, Sparkles } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Clock, Utensils, ChevronLeft, Users, Sparkles, Star, UserRound, Heart } from 'lucide-react';
+import { Button } from "@/components/ui/button";
 import RecipeCard from '@/components/RecipeCard';
+import Newsletter from '@/components/Newsletter';
+import { Separator } from "@/components/ui/separator";
 
 const RecipeDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -68,12 +70,49 @@ const RecipeDetail = () => {
                 </div>
                 <div className="flex items-center gap-1 text-gray-600">
                   <Users className="h-5 w-5" />
-                  <span>Serves 4</span>
+                  <span>Serves {recipe.servings || 4}</span>
                 </div>
               </div>
             </div>
             
+            {/* Author info */}
+            <div className="flex items-center mb-6 bg-gray-50 p-3 rounded-lg">
+              <div className="flex-shrink-0 mr-3">
+                <div className="w-12 h-12 bg-baking-pink rounded-full flex items-center justify-center">
+                  <UserRound className="h-6 w-6 text-primary" />
+                </div>
+              </div>
+              <div>
+                <p className="font-medium text-gray-800">
+                  By {recipe.author || "Julian Nwadinobi"}
+                </p>
+                <p className="text-sm text-gray-500">Food Scientist & Culinary Innovator</p>
+              </div>
+            </div>
+            
             <p className="text-gray-700 mb-8 leading-relaxed">{recipe.content}</p>
+            
+            {/* Recipe Ratings */}
+            <div className="mb-8 flex items-center justify-between bg-gray-50 p-4 rounded-lg">
+              <div className="flex items-center">
+                <div className="flex">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star 
+                      key={star} 
+                      className="h-5 w-5" 
+                      fill={star <= 5 ? "#FFD700" : "none"} 
+                      stroke={star <= 5 ? "#FFD700" : "#CBD5E0"}
+                    />
+                  ))}
+                </div>
+                <span className="ml-2 text-gray-600">5.0 (32 reviews)</span>
+              </div>
+              
+              <Button variant="outline" size="sm" className="flex items-center gap-1">
+                <Heart className="h-4 w-4" />
+                <span>Save Recipe</span>
+              </Button>
+            </div>
             
             {/* Recipe Gallery */}
             {recipe.galleryImages && recipe.galleryImages.length > 0 && (
@@ -111,6 +150,60 @@ const RecipeDetail = () => {
               </div>
             </div>
             
+            {/* Nutrition Info */}
+            <div className="mt-8 mb-8">
+              <h2 className="text-2xl font-bold mb-4 text-gray-800">Nutrition Information</h2>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div className="bg-gray-50 p-3 rounded-lg text-center">
+                  <p className="text-lg font-bold text-primary">320</p>
+                  <p className="text-sm text-gray-600">Calories</p>
+                </div>
+                <div className="bg-gray-50 p-3 rounded-lg text-center">
+                  <p className="text-lg font-bold text-primary">12g</p>
+                  <p className="text-sm text-gray-600">Protein</p>
+                </div>
+                <div className="bg-gray-50 p-3 rounded-lg text-center">
+                  <p className="text-lg font-bold text-primary">42g</p>
+                  <p className="text-sm text-gray-600">Carbs</p>
+                </div>
+                <div className="bg-gray-50 p-3 rounded-lg text-center">
+                  <p className="text-lg font-bold text-primary">14g</p>
+                  <p className="text-sm text-gray-600">Fat</p>
+                </div>
+              </div>
+              <p className="text-xs text-gray-500 mt-2">
+                *Nutrition values are estimated and may vary based on ingredients and serving size.
+              </p>
+            </div>
+            
+            <Separator className="my-8" />
+            
+            {/* Chef's Tips */}
+            <div className="mt-8 mb-8 bg-baking-blue bg-opacity-30 p-6 rounded-lg">
+              <h2 className="text-2xl font-bold mb-4 text-gray-800 flex items-center">
+                <Sparkles className="h-5 w-5 text-primary mr-2" />
+                Chef's Tips
+              </h2>
+              <ul className="space-y-2">
+                <li className="text-gray-700 flex items-start">
+                  <span className="text-primary mr-2">•</span>
+                  For best results, bring all refrigerated ingredients to room temperature before starting.
+                </li>
+                <li className="text-gray-700 flex items-start">
+                  <span className="text-primary mr-2">•</span>
+                  Don't overmix the batter, as this can lead to a dense texture.
+                </li>
+                <li className="text-gray-700 flex items-start">
+                  <span className="text-primary mr-2">•</span>
+                  This recipe can be prepared up to 24 hours in advance and stored in the refrigerator.
+                </li>
+                <li className="text-gray-700 flex items-start">
+                  <span className="text-primary mr-2">•</span>
+                  For a gluten-free version, substitute regular flour with a 1:1 gluten-free flour blend.
+                </li>
+              </ul>
+            </div>
+            
             {/* Serving Suggestions */}
             <div className="mt-8 bg-baking-yellow bg-opacity-50 p-6 rounded-lg">
               <h2 className="text-2xl font-bold mb-4 text-gray-800 flex items-center">
@@ -137,6 +230,11 @@ const RecipeDetail = () => {
               </ul>
             </div>
           </div>
+        </div>
+        
+        {/* Newsletter */}
+        <div className="max-w-4xl mx-auto mb-12">
+          <Newsletter />
         </div>
         
         {/* More Recipes Section */}

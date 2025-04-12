@@ -7,6 +7,9 @@ import RecipeCard from '@/components/RecipeCard';
 import { recipes } from '@/data/recipes';
 import { ChevronLeft, ChevronRight, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import RecipeOfMonth from '@/components/RecipeOfMonth';
+import Newsletter from '@/components/Newsletter';
+import Confetti from '@/components/Confetti';
 
 const Index = () => {
   const location = useLocation();
@@ -55,9 +58,17 @@ const Index = () => {
     return idB - idA;
   }).slice(0, 3);
 
+  // Set recipes with author and servings
+  const enhancedRecipes = recentRecipes.map(recipe => ({
+    ...recipe,
+    author: "Julian Nwadinobi",
+    servings: 4
+  }));
+
   return (
     <div className="min-h-screen confetti-bg">
       <Navbar />
+      <Confetti />
       
       <main className="container mx-auto px-4 py-8">
         <div className="relative mb-12 rounded-xl overflow-hidden shadow-xl">
@@ -85,6 +96,13 @@ const Index = () => {
           </div>
         </div>
         
+        {/* Recipe of the Month */}
+        {!searchQuery && (
+          <div className="mb-12">
+            <RecipeOfMonth />
+          </div>
+        )}
+        
         {/* Recent Posts Section */}
         {!searchQuery && (
           <div className="mb-12">
@@ -93,8 +111,26 @@ const Index = () => {
               Recent Recipes
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {recentRecipes.map((recipe) => (
+              {enhancedRecipes.map((recipe) => (
                 <RecipeCard key={`recent-${recipe.id}`} recipe={recipe} />
+              ))}
+            </div>
+          </div>
+        )}
+        
+        {/* Categories Grid */}
+        {!searchQuery && (
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold mb-6 text-gray-800">Recipe Categories</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {['Breakfast', 'Lunch', 'Dinner', 'Desserts'].map((category) => (
+                <div 
+                  key={category}
+                  className="bg-baking-pink bg-opacity-70 rounded-lg p-6 text-center hover:bg-opacity-100 transition-all cursor-pointer"
+                >
+                  <h3 className="font-bold text-gray-800">{category}</h3>
+                  <p className="text-sm text-gray-600 mt-1">{Math.floor(Math.random() * 10) + 5} recipes</p>
+                </div>
               ))}
             </div>
           </div>
@@ -118,7 +154,7 @@ const Index = () => {
           {paginatedRecipes.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {paginatedRecipes.map((recipe) => (
-                <RecipeCard key={recipe.id} recipe={recipe} />
+                <RecipeCard key={recipe.id} recipe={{...recipe, author: "Julian Nwadinobi", servings: 4}} />
               ))}
             </div>
           ) : (
@@ -137,7 +173,7 @@ const Index = () => {
         
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="flex justify-center items-center gap-2 mt-8">
+          <div className="flex justify-center items-center gap-2 mt-8 mb-12">
             <Button
               variant="outline"
               size="icon"
@@ -174,6 +210,9 @@ const Index = () => {
             </Button>
           </div>
         )}
+        
+        {/* Newsletter Section */}
+        <Newsletter />
       </main>
       
       <Footer />
