@@ -909,7 +909,6 @@ export const recipes: Recipe[] = [
     difficulty: "Hard",
     content: "This espresso tiramisu is a decadent dessert that brings together the rich flavors of coffee and creamy mascarpone. Perfect for special occasions and coffee lovers.",
     galleryImages: [
-      "https://bakedbrewedbeautiful.com/wp-content/uploads/2021/03/DSC0432-1536x1027.jpg",
       "https://i.imgur.com/oweC1gg.jpg"
     ],
     ingredients: [
