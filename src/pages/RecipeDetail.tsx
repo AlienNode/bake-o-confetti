@@ -5,14 +5,20 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import RecipeGallery from '@/components/RecipeGallery';
 import { recipes } from '@/data/recipes';
-import { Clock, Utensils, ChevronLeft } from 'lucide-react';
+import { Clock, Utensils, ChevronLeft, Users, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import RecipeCard from '@/components/RecipeCard';
 
 const RecipeDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   
   const recipe = recipes.find(r => r.slug === slug);
+  
+  // Get 3 related recipes (excluding current one)
+  const relatedRecipes = recipes
+    .filter(r => r.slug !== slug)
+    .slice(0, 3);
   
   useEffect(() => {
     if (!recipe) {
@@ -38,7 +44,7 @@ const RecipeDetail = () => {
           Back to recipes
         </Button>
         
-        <div className="bg-white rounded-lg shadow-md overflow-hidden max-w-4xl mx-auto">
+        <div className="bg-white rounded-lg shadow-md overflow-hidden max-w-4xl mx-auto mb-12">
           <div className="h-72 sm:h-96 overflow-hidden">
             <img 
               src={recipe.image} 
@@ -59,6 +65,10 @@ const RecipeDetail = () => {
                 <div className="flex items-center gap-1 text-gray-600">
                   <Utensils className="h-5 w-5" />
                   <span>{recipe.difficulty}</span>
+                </div>
+                <div className="flex items-center gap-1 text-gray-600">
+                  <Users className="h-5 w-5" />
+                  <span>Serves 4</span>
                 </div>
               </div>
             </div>
@@ -100,6 +110,42 @@ const RecipeDetail = () => {
                 </ol>
               </div>
             </div>
+            
+            {/* Serving Suggestions */}
+            <div className="mt-8 bg-baking-yellow bg-opacity-50 p-6 rounded-lg">
+              <h2 className="text-2xl font-bold mb-4 text-gray-800 flex items-center">
+                <Sparkles className="h-5 w-5 text-primary mr-2" />
+                Serving Suggestions
+              </h2>
+              <ul className="space-y-2">
+                <li className="text-gray-700 flex items-start">
+                  <span className="text-primary mr-2">•</span>
+                  Serve warm with a scoop of vanilla ice cream for a delightful dessert.
+                </li>
+                <li className="text-gray-700 flex items-start">
+                  <span className="text-primary mr-2">•</span>
+                  Pair with a cup of hot coffee or tea for a cozy afternoon treat.
+                </li>
+                <li className="text-gray-700 flex items-start">
+                  <span className="text-primary mr-2">•</span>
+                  Garnish with fresh mint leaves and a dusting of powdered sugar for an elegant presentation.
+                </li>
+                <li className="text-gray-700 flex items-start">
+                  <span className="text-primary mr-2">•</span>
+                  For a special touch, drizzle with chocolate or caramel sauce before serving.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        {/* More Recipes Section */}
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold mb-6 text-gray-800">More Recipes You Might Like</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {relatedRecipes.map((relatedRecipe) => (
+              <RecipeCard key={relatedRecipe.id} recipe={relatedRecipe} />
+            ))}
           </div>
         </div>
       </main>
