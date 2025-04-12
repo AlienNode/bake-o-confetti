@@ -18,40 +18,41 @@ const AboutAuthor = () => {
                 <UserRound className="h-16 w-16 text-primary" />
               </div>
               <h1 className="text-3xl font-bold text-gray-800">About The Author</h1>
-              <p className="text-gray-600 mt-2">Passionate home cook and recipe developer</p>
+              <p className="text-gray-600 mt-2">Culinary Innovator and Food Storyteller</p>
             </div>
             
             <div className="space-y-6">
               <p className="text-gray-700 leading-relaxed">
-                Hi there! I'm the creator behind eazyrecipes, a passionate cook who believes that delicious food doesn't have to be complicated. 
-                My culinary journey started in my grandmother's kitchen, where I learned that the best dishes are made with love and simple ingredients.
+                Hi there! I'm Julian Nwadinobi, the creative mind behind eazyrecipes. 
+                My passion for cooking stems from a rich cultural heritage and a deep love for exploring culinary traditions from around the world.
               </p>
               
               <p className="text-gray-700 leading-relaxed">
-                After years of experimenting with recipes and sharing them with friends and family, I decided to create this blog to reach a wider audience. 
-                My mission is to make cooking accessible to everyone, regardless of their skill level or experience in the kitchen.
+                With a background in food science and a lifetime of cooking experience, 
+                I've dedicated myself to creating recipes that are not just meals, but experiences that bring people together.
               </p>
               
               <div className="bg-baking-blue bg-opacity-50 p-4 rounded-lg">
                 <h2 className="text-xl font-bold text-gray-800 mb-2 flex items-center">
-                  <Heart className="h-5 w-5 text-primary mr-2" /> My Cooking Philosophy
+                  <Heart className="h-5 w-5 text-primary mr-2" /> My Culinary Philosophy
                 </h2>
                 <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                  <li>Simple ingredients yield extraordinary results</li>
-                  <li>Cooking should be fun, not stressful</li>
-                  <li>Anyone can cook with the right guidance</li>
-                  <li>There's always room for experimentation</li>
-                  <li>Food brings people together</li>
+                  <li>Food is a universal language of love and connection</li>
+                  <li>Every recipe tells a story</li>
+                  <li>Cooking is an art form that nourishes both body and soul</li>
+                  <li>Innovation meets tradition in the kitchen</li>
+                  <li>Sharing meals creates lasting memories</li>
                 </ul>
               </div>
               
               <div className="bg-baking-yellow bg-opacity-50 p-4 rounded-lg">
                 <h2 className="text-xl font-bold text-gray-800 mb-2 flex items-center">
-                  <BookOpen className="h-5 w-5 text-primary mr-2" /> My Culinary Background
+                  <BookOpen className="h-5 w-5 text-primary mr-2" /> Professional Background
                 </h2>
                 <p className="text-gray-700 leading-relaxed">
-                  While I don't have formal culinary training, I've spent countless hours perfecting recipes, attending workshops, and learning from both successes and failures. 
-                  I believe that cooking is as much about heart as it is about technique, and I'm excited to share my journey with you.
+                  As a trained food scientist and passionate home cook, 
+                  I've spent years exploring the intricate world of flavors, techniques, and culinary traditions. 
+                  My approach combines scientific precision with creative passion, bringing unique and delightful recipes to life.
                 </p>
               </div>
               
@@ -59,7 +60,7 @@ const AboutAuthor = () => {
                 <Button 
                   variant="outline" 
                   className="flex items-center gap-2"
-                  onClick={() => window.open('https://github.com/wackydawg', '_blank')}
+                  onClick={() => window.open('https://github.com/juliannwadinobi', '_blank')}
                 >
                   <Github className="h-5 w-5" />
                   GitHub
@@ -67,6 +68,7 @@ const AboutAuthor = () => {
                 <Button 
                   variant="outline" 
                   className="flex items-center gap-2"
+                  onClick={() => window.open('https://juliannwadinobi.com', '_blank')}
                 >
                   <Globe className="h-5 w-5" />
                   Website
