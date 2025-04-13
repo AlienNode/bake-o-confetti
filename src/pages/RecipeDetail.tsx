@@ -33,12 +33,16 @@ const RecipeDetail = () => {
   
   if (!recipe) return null;
   
+  // Safely access categories with optional chaining
+  const recipeCategories = recipe.categories || [];
+  const keywordsString = `${recipe.title}, recipe, cooking, ${recipeCategories.join(', ') || ''}, homemade, easy recipes`;
+  
   return (
     <div className="min-h-screen confetti-bg">
       <SEO 
         title={recipe.title}
         description={recipe.description || `Learn how to make ${recipe.title} with this easy recipe. ${recipe.prepTime} prep time, ${recipe.difficulty} difficulty.`}
-        keywords={`${recipe.title}, recipe, cooking, ${recipe.categories?.join(', ') || ''}, homemade, easy recipes`}
+        keywords={keywordsString}
         ogImage={recipe.image}
         ogType="article"
       />
