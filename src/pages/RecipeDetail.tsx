@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import RecipeCard from '@/components/RecipeCard';
 import Newsletter from '@/components/Newsletter';
 import { Separator } from "@/components/ui/separator";
+import SEO from '@/components/SEO';
 
 const RecipeDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -34,6 +35,13 @@ const RecipeDetail = () => {
   
   return (
     <div className="min-h-screen confetti-bg">
+      <SEO 
+        title={recipe.title}
+        description={recipe.description || `Learn how to make ${recipe.title} with this easy recipe. ${recipe.prepTime} prep time, ${recipe.difficulty} difficulty.`}
+        keywords={`${recipe.title}, recipe, cooking, ${recipe.categories?.join(', ') || ''}, homemade, easy recipes`}
+        ogImage={recipe.image}
+        ogType="article"
+      />
       <Navbar />
       
       <main className="container mx-auto px-4 py-8">

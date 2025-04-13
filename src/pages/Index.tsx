@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import RecipeOfMonth from '@/components/RecipeOfMonth';
 import Newsletter from '@/components/Newsletter';
 import Confetti from '@/components/Confetti';
+import SEO from '@/components/SEO';
 
 const Index = () => {
   const location = useLocation();
@@ -59,6 +60,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen confetti-bg">
+      <SEO 
+        title="Home" 
+        description="Welcome to Eazy Recipes - Discover delicious, easy-to-make recipes that are perfect for beginners and experienced cooks alike."
+        keywords="easy recipes, simple cooking, homemade meals, beginner recipes, quick recipes"
+      />
       <Navbar />
       <Confetti />
       

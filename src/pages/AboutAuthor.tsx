@@ -4,10 +4,16 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { UserRound, Heart, BookOpen, Github, Globe } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import SEO from '@/components/SEO';
 
 const AboutAuthor = () => {
   return (
     <div className="min-h-screen confetti-bg">
+      <SEO 
+        title="About Julian Nwadinobi"
+        description="Learn more about Julian Nwadinobi, the food scientist and culinary innovator behind Eazy Recipes."
+        keywords="Julian Nwadinobi, food scientist, chef, culinary innovator, recipe author, food blogger"
+      />
       <Navbar />
       
       <main className="container mx-auto px-4 py-8">

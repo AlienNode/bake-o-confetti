@@ -1,9 +1,9 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Shield, FileText, Cookie, AlertCircle } from 'lucide-react';
 import { useParams } from 'react-router-dom';
+import SEO from '@/components/SEO';
 
 // Define the legal page content
 const legalPageContent: Record<string, {
@@ -204,7 +204,6 @@ const legalPageContent: Record<string, {
 const LegalPage = () => {
   const { pageType } = useParams<{ pageType: string }>();
   
-  // Handle invalid page types
   if (!pageType || !legalPageContent[pageType]) {
     return <div>Page not found</div>;
   }
@@ -213,6 +212,11 @@ const LegalPage = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO 
+        title={pageInfo.title}
+        description={pageInfo.description}
+        keywords={`${pageInfo.title.toLowerCase()}, legal, eazy recipes, terms`}
+      />
       <Navbar />
       
       <main className="container mx-auto px-4 py-8">

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -8,8 +7,8 @@ import { recipes } from '@/data/recipes';
 import { ChevronLeft, ChevronRight, UtensilsCrossed } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Newsletter from '@/components/Newsletter';
+import SEO from '@/components/SEO';
 
-// Define the categories and their associated recipes
 const categoryMappings: Record<string, { 
   title: string, 
   description: string,
@@ -53,36 +52,29 @@ const CategoryPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   
-  // Handle invalid categories
   if (!category || !categoryMappings[category]) {
     return <div>Category not found</div>;
   }
   
   const categoryInfo = categoryMappings[category];
   
-  // Pagination
   const queryParams = new URLSearchParams(location.search);
   const currentPage = parseInt(queryParams.get('page') || '1', 10);
   const ITEMS_PER_PAGE = 5;
   
-  // Filter recipes based on category
   const filteredRecipes = recipes.filter(categoryInfo.filterFn);
   
-  // Calculate pagination
   const totalPages = Math.ceil(filteredRecipes.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const paginatedRecipes = filteredRecipes.slice(startIndex, startIndex + ITEMS_PER_PAGE);
   
-  // Handle page change
   const handlePageChange = (newPage: number) => {
     const params = new URLSearchParams(location.search);
     params.set('page', newPage.toString());
     navigate({ search: params.toString() });
-    // Scroll to top when changing page
     window.scrollTo(0, 0);
   };
   
-  // Add author and servings to recipes
   const enhancedRecipes = paginatedRecipes.map(recipe => ({
     ...recipe,
     author: "Julian Nwadinobi",
@@ -91,6 +83,11 @@ const CategoryPage = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO 
+        title={categoryInfo.title}
+        description={categoryInfo.description}
+        keywords={`${category} recipes, easy ${category}, homemade ${category}, simple ${category} recipes`}
+      />
       <Navbar />
       
       <main className="container mx-auto px-4 py-8">
@@ -104,7 +101,6 @@ const CategoryPage = () => {
           </p>
         </div>
         
-        {/* Recipes */}
         <div className="mb-8">
           {enhancedRecipes.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -119,7 +115,6 @@ const CategoryPage = () => {
           )}
         </div>
         
-        {/* Pagination */}
         {totalPages > 1 && (
           <div className="flex justify-center items-center gap-2 mt-8 mb-12">
             <Button
@@ -159,7 +154,6 @@ const CategoryPage = () => {
           </div>
         )}
         
-        {/* Newsletter Section */}
         <Newsletter />
       </main>
       
