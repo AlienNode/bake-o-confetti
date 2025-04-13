@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -34,7 +33,8 @@ const RecipeDetail = () => {
   if (!recipe) return null;
   
   // Safely access categories with optional chaining
-  const recipeCategories = recipe.categories || [];
+  // Use type assertion to tell TypeScript that categories might exist on recipe
+  const recipeCategories = (recipe as any).categories || [];
   const keywordsString = `${recipe.title}, recipe, cooking, ${recipeCategories.join(', ') || ''}, homemade, easy recipes`;
   
   return (
